@@ -20,17 +20,8 @@ const list = [
   }
 ]
 
-function App() {
+function List() {
   return (
-    <>
-      <div>
-        <h1>My Hacker stories</h1>
-
-        <label hmtlFor="search">Search: </label>
-        <input id="search" type= "text" />
-        
-        <hr />
-
         <ul>
           {list.map(function (item) {
             return <li key={item.objectID}>
@@ -43,9 +34,32 @@ function App() {
               </li>;
           })}
         </ul>
+  );
+}
+
+function Search() {
+  return (
+    <div>
+      
+
+      <label hmtlFor="search">Search: </label>
+      <input id="search" type= "text" />
+    </div>
+  )
+}
+
+function App() {
+  return (
+    <>
+      <div>
+        <h1>My Hacker stories</h1>  
+          <Search />
+          <hr/>
+          <List />
       </div>
     </>
   );
 }
+
 
 export default App
