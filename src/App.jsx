@@ -1,4 +1,3 @@
-/* eslint-disable react/no-unknown-property */
 import * as React from 'react';
 
 const list = [
@@ -12,54 +11,55 @@ const list = [
   },
   {
     title: 'Redux',
-    url: 'https://reduz.js.org',
-    author: 'Dan Abramov,Andrew Clark',
+    url: 'https://redux.js.org/',
+    author: 'Dan Abramov, Andrew Clark',
     num_comments: 2,
     points: 5,
     objectID: 1,
-  }
-]
+  },
+];
 
-function List() {
-  return (
-        <ul>
-          {list.map(function (item) {
-            return <li key={item.objectID}>
-              <span>
-                <a href={item.url}>{item.title} </a>
-                </span>
-                <span> {item.author}</span>
-                <span> {item.num_comments}</span>
-                <span> {item.points}</span>
-              </li>;
-          })}
-        </ul>
-  );
-}
+const App = () => (
+  <div>
+    <h1>My Hacker Stories</h1>
 
-function Search() {
+    <Search />
+
+    <hr />
+
+    <List />
+  </div>
+);
+
+const Search = () => {
+  const handleChange = (event) => {
+    // synthetic event
+    console.log(event);
+    // value of target (here: input HTML element)
+    console.log(event.target.value);
+  };
+
   return (
     <div>
-      
-
-      <label hmtlFor="search">Search: </label>
-      <input id="search" type= "text" />
+      <label htmlFor="search">Search: </label>
+      <input id="search" type="text" onChange={handleChange} />
     </div>
-  )
-}
-
-function App() {
-  return (
-    <>
-      <div>
-        <h1>My Hacker stories</h1>  
-          <Search />
-          <hr/>
-          <List />
-      </div>
-    </>
   );
-}
+};
 
+const List = () => (
+  <ul>
+    {list.map((item) => (
+      <li key={item.objectID}>
+        <span>
+          <a href={item.url}>{item.title}</a>
+        </span>
+        <span>{item.author}</span>
+        <span>{item.num_comments}</span>
+        <span>{item.points}</span>
+      </li>
+    ))}
+  </ul>
+);
 
-export default App
+export default App;
